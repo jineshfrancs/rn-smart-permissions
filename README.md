@@ -11,11 +11,33 @@ npm install rn-smart-permissions
 ## Usage
 
 ```js
-import { multiply } from 'rn-smart-permissions';
+import { checkAndRequestPermissions,  PERMISSION, PERMISSION_RESULT} from 'rn-smart-permissions';
 
 // ...
 
-const result = await multiply(3, 7);
+   checkAndRequestPermissions(
+            PERMISSION.LOCATION,
+            () => {
+              //Rationale dialog here
+              return new Promise((resolve) => {
+                //show rationale dialog here and resolve the promise with true to continue
+              });
+            },
+            () => {
+              //blocked permission dialog here
+              return new Promise((resolve) => {
+                //show blocked permission dialog here and resolve the promise with true to open settings
+              });
+             }
+            )
+            .then((result) => {
+              if (result === PERMISSION_RESULT.AUTHORIZED) {
+                Alert.alert('', 'Got All access');
+              }
+            })
+            .catch((e) => {
+              console.log('permission', e);
+            });
 ```
 
 ## Contributing
