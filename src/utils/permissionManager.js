@@ -175,32 +175,32 @@ export default class PermissionManager {
          if (
             Object.keys(response).every(
               result =>
-                response[result] === PERMISSION_STATUS.GRANTED ||
-                response[result] === PERMISSION_STATUS.LIMITED ||
-                response[result] === PERMISSION_STATUS.AUTHORIZED
+                response[result] === Permissions.RESULTS.GRANTED ||
+                response[result] === Permissions.RESULTS.LIMITED ||
+                response[result] === Permissions.RESULTS.AUTHORIZED
             )
           ) {
             resolve(PERMISSION_RESULT.AUTHORIZED);
           } else if (
             Object.keys(response).some(
               result =>
-                response[result] === PERMISSION_STATUS.DENIED ||
-                response[result] === PERMISSION_STATUS.UNDETERMINED 
+                response[result] === Permissions.RESULTS.DENIED ||
+                response[result] === Permissions.RESULTS.UNDETERMINED 
             )
           ) {
             Permissions.requestMultiple(permissions).then(response => {
               if (
                 Object.keys(response).every(
                   result =>
-                    response[result] === PERMISSION_STATUS.GRANTED ||
-                    response[result] === PERMISSION_STATUS.LIMITED ||
-                    response[result] === PERMISSION_STATUS.AUTHORIZED
+                    response[result] === Permissions.RESULTS.GRANTED ||
+                    response[result] === Permissions.RESULTS.LIMITED ||
+                    response[result] === Permissions.RESULTS.AUTHORIZED
                 )
               ) {
                resolve(PERMISSION_RESULT.AUTHORIZED);
               } else if(Object.keys(response).some(
                 result =>
-                  response[result] === PERMISSION_STATUS.BLOCKED
+                  response[result] === Permissions.RESULTS.BLOCKED
               )) {
                permissionBlockedDialog().then((isNeeded) => {
                   if (isNeeded) {
@@ -214,7 +214,7 @@ export default class PermissionManager {
             });
           } else if (Object.keys(response).some(
             result =>
-              response[result] === PERMISSION_STATUS.BLOCKED
+              response[result] === Permissions.RESULTS.BLOCKED
           )) {
             permissionBlockedDialog().then((isNeeded) => {
                if (isNeeded) {
