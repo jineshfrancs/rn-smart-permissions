@@ -15,55 +15,21 @@ import { checkAndRequestPermissions,  PERMISSION, PERMISSION_RESULT} from 'rn-sm
 
 // ...
 
-checkAndRequestPermissions(
+          checkAndRequestPermissions(
             PERMISSION.LOCATION,
             () => {
               //Rationale dialog here
               return new Promise((resolve) => {
-                Alert.alert(
-                  '',
-                  'App needs location permission to read your current location and display on map',
-                  [
-                    {
-                      text: 'cancel',
-                      onPress: () => {
-                        resolve(false);
-                      },
-                    },
-                    {
-                      text: 'ok',
-                      onPress: () => {
-                        resolve(true);
-                      },
-                    },
-                  ]
-                );
+                //show rationale dialog here and resolve the promise with true to continue
               });
             },
             () => {
               //blocked permission dialog here
               return new Promise((resolve) => {
-                Alert.alert(
-                  '',
-                  'Location services are blocked, please enable through settings',
-                  [
-                    {
-                      text: 'cancel',
-                      onPress: () => {
-                        resolve(false);
-                      },
-                    },
-                    {
-                      text: 'open settings',
-                      onPress: () => {
-                        resolve(true);
-                      },
-                    },
-                  ]
-                );
+                //show blocked permission dialog here and resolve the promise with true to open settings
               });
-            }
-          )
+             }
+            )
             .then((result) => {
               if (result === PERMISSION_RESULT.AUTHORIZED) {
                 Alert.alert('', 'Got All access');
