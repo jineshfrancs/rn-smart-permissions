@@ -15,7 +15,7 @@ import { checkAndRequestPermissions,  PERMISSION, PERMISSION_RESULT} from 'rn-sm
 
 // ...
 
-          checkAndRequestPermissions(
+   checkAndRequestPermissions(
             PERMISSION.LOCATION,
             () => {
               //Rationale dialog here
