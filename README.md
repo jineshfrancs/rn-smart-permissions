@@ -10,8 +10,11 @@ npm install rn-smart-permissions
 
 ## Advantages
 
-![image](https://github.com/jineshfrancs/rn-smart-permissions/blob/main/images/Slide1.png?raw=true)
+<img src="https://user-images.githubusercontent.com/23492622/208310967-2a3861f5-be4e-4bc9-8b69-80fa83a6c6b2.png" height="300"/>
 
+<img src="https://user-images.githubusercontent.com/23492622/208310984-5cf9d00e-bf0c-4c96-95f9-df315a9acda7.png" height="300"/>
+
+<img src="https://user-images.githubusercontent.com/23492622/208310992-f1a99f95-ddb3-4af2-a1dc-173134f75f11.png" height="300"/>
 
 ## Usage
 
