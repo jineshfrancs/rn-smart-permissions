@@ -8,6 +8,11 @@ Permissions Library for React Native ( Android and iOS)
 npm install rn-smart-permissions
 ```
 
+## Advantages
+
+![image](https://github.com/jineshfrancs/rn-smart-permissions/blob/main/images/Slide1.png)
+
+
 ## Usage
 
 ```js
