@@ -1,5 +1,5 @@
 import { NativeModules, Platform } from 'react-native';
-import PermissionManager from "../src/permissionManager"
+import PermissionManager from "./utils/permissionManager"
 
 const LINKING_ERROR =
   `The package 'rn-smart-permissions' doesn't seem to be linked. Make sure: \n\n` +
@@ -29,10 +29,10 @@ export const PERMISSION_RESULT = {
   DENIED: "denied"
 }
 
-export function turnOnBluetooth(): Promise<number> {
+export function turnOnBluetooth() {
   return RnSmartPermissions.turnOnBluetooth();
 }
 
-export function checkAndRequestPermissions(permission: string, permissionRationaleDialog: object, permissionBlockedDialog: object): Promise<string> {
+export function checkAndRequestPermissions(permission , permissionRationaleDialog , permissionBlockedDialog) {
   return PermissionManager.checkAndRequestPermission(permission, permissionRationaleDialog, permissionBlockedDialog);
 }

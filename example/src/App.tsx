@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { StyleSheet, View, Button, Alert } from 'react-native';
 import {
-  multiply,
   checkAndRequestPermissions,
   PERMISSION,
 } from 'rn-smart-permissions';
@@ -43,6 +42,7 @@ export default function App() {
               });
             },
             () => {
+              //blocked permission dialog here
               return new Promise((resolve) => {
                 Alert.alert(
                   '',

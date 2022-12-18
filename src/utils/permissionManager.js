@@ -4,7 +4,7 @@ import Permissions from 'react-native-permissions';
 import { Linking, NativeModules } from 'react-native';
 import { Alert } from '../components';
 import { Platform } from 'react-native';
-import { PERMISSION, PERMISSION_RESULT } from '../src';
+import { PERMISSION, PERMISSION_RESULT } from '..';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
 const RnSmartPermissions = NativeModules.RnSmartPermissions;
 
