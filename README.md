@@ -52,6 +52,11 @@ import { checkAndRequestPermissions,  PERMISSION, PERMISSION_RESULT} from 'rn-sm
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
+## Thanks
+
+  1. https://www.npmjs.com/package/react-native-permissions
+  2. https://www.npmjs.com/package/react-native-android-location-enabler
+
 ## License
 
 MIT
