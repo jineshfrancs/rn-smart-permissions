@@ -16,6 +16,13 @@ npm install rn-smart-permissions
 
 <img src="https://user-images.githubusercontent.com/23492622/208310992-f1a99f95-ddb3-4af2-a1dc-173134f75f11.png" height="300"/>
 
+<img src="https://user-images.githubusercontent.com/23492622/208423654-46d6bce8-6307-447b-9da7-5cea0282b54d.png" height="300"/>
+
+<img src="https://user-images.githubusercontent.com/23492622/208423403-3c1889b2-fb0b-457c-a411-b610f569c354.png" height="300"/>
+
+
+
+
 ## Usage
 
 ```js
