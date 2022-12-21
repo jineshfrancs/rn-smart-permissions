@@ -1,5 +1,6 @@
 import { NativeModules, Platform } from 'react-native';
-import PermissionManager from "./utils/permissionManager"
+import PermissionManager from "./utils/permissionManager";
+import Permissions from 'react-native-permissions';
 
 const LINKING_ERROR =
   `The package 'rn-smart-permissions' doesn't seem to be linked. Make sure: \n\n` +
@@ -20,7 +21,9 @@ const RnSmartPermissions = NativeModules.RnSmartPermissions
 
 export const PERMISSION = {
   BLUETOOTH : "bluetooth",
-  LOCATION : "location"
+  LOCATION : "location",
+  STORAGE : Platform.OS == 'ios' ? Permissions.PERMISSIONS.IOS.PHOTO_LIBRARY : Permissions.PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+  CAMERA : Platform.OS == 'ios' ? Permissions.PERMISSIONS.IOS.CAMERA : Permissions.PERMISSIONS.ANDROID.CAMERA
 }
 
 export const PERMISSION_RESULT = {

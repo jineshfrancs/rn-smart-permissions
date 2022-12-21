@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Need photos permission to stroe the profile picture in photos</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Need camera permission to capture profile picture</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Bluetooth devicves</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>

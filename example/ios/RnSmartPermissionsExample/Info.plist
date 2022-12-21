@@ -4,8 +4,6 @@
 <dict>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Needed alweays permission</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -43,6 +41,10 @@
 	<string></string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This is required to scan devices nearby</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera permission is required to capture photo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo permission is required to store photos in gallery</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

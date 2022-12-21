@@ -138,6 +138,131 @@ export default function App() {
             });
         }}
       />
+
+     <Button
+        title="Camera Permission"
+        style={styles.button}
+        onPress={() => {
+          checkAndRequestPermissions(
+            PERMISSION.CAMERA,
+            () => {
+              //Rationale dialog here
+              return new Promise((resolve) => {
+                Alert.alert(
+                  '',
+                  'App needs camera permission to capture your profile picture',
+                  [
+                    {
+                      text: 'cancel',
+                      onPress: () => {
+                        resolve(false);
+                      },
+                    },
+                    {
+                      text: 'ok',
+                      onPress: () => {
+                        resolve(true);
+                      },
+                    },
+                  ]
+                );
+              });
+            },
+            () => {
+              return new Promise((resolve) => {
+                Alert.alert(
+                  '',
+                  'Usage of camera is blocked, Need camera permission to update your profile',
+                  [
+                    {
+                      text: 'cancel',
+                      onPress: () => {
+                        resolve(false);
+                      },
+                    },
+                    {
+                      text: 'open settings',
+                      onPress: () => {
+                        resolve(true);
+                      },
+                    },
+                  ]
+                );
+              });
+            }
+          )
+            .then((isAllowed) => {
+              if (isAllowed) {
+                Alert.alert('', 'Got All access');
+              }
+            })
+            .catch((e) => {
+              console.log('permission', e);
+            });
+        }}
+      />
+       <Button
+        title="Storage Permission"
+        style={styles.button}
+        onPress={() => {
+          checkAndRequestPermissions(
+            PERMISSION.STORAGE,
+            () => {
+              //Rationale dialog here
+              return new Promise((resolve) => {
+                Alert.alert(
+                  '',
+                  'App needs storage permission to store the image',
+                  [
+                    {
+                      text: 'cancel',
+                      onPress: () => {
+                        resolve(false);
+                      },
+                    },
+                    {
+                      text: 'ok',
+                      onPress: () => {
+                        resolve(true);
+                      },
+                    },
+                  ]
+                );
+              });
+            },
+            () => {
+              return new Promise((resolve) => {
+                Alert.alert(
+                  '',
+                  'Usage of storage is blocked, Need storage/photos permission to store picture in gallery',
+                  [
+                    {
+                      text: 'cancel',
+                      onPress: () => {
+                        resolve(false);
+                      },
+                    },
+                    {
+                      text: 'open settings',
+                      onPress: () => {
+                        resolve(true);
+                      },
+                    },
+                  ]
+                );
+              });
+            }
+          )
+            .then((isAllowed) => {
+              if (isAllowed) {
+                Alert.alert('', 'Got All access');
+              }
+            })
+            .catch((e) => {
+              console.log('permission', e);
+            });
+        }}
+      />
     </View>
   );
 }

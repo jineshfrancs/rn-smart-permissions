@@ -2,7 +2,6 @@
 
 import Permissions from 'react-native-permissions';
 import { Linking, NativeModules } from 'react-native';
-import { Alert } from '../components';
 import { Platform } from 'react-native';
 import { PERMISSION, PERMISSION_RESULT } from '..';
 import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
@@ -48,9 +47,13 @@ export default class PermissionManager {
        } else {
           this.handlePermissions(Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL, permissionRationaleDialog, permissionBlockedDialog, resolve, true);
        }
-      } else if (PERMISSION.LOCATION) {
+      } else if (permission == PERMISSION.LOCATION) {
          let perm = Platform.OS === 'android' ?Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION : Permissions.PERMISSIONS.IOS.LOCATION_WHEN_IN_USE;
          this.handlePermissions(perm,permissionRationaleDialog, permissionBlockedDialog, resolve);
+      } else if(permission == PERMISSION.STORAGE){
+        this.handlePermissions(permission,permissionRationaleDialog, permissionBlockedDialog, resolve);
+      } else if(permission == PERMISSION.CAMERA){
+        this.handlePermissions(permission,permissionRationaleDialog, permissionBlockedDialog, resolve);
       } else {
         reject('This permission not supported');
       }
@@ -143,6 +146,8 @@ export default class PermissionManager {
                         resolve(PERMISSION_RESULT.AUTHORIZED);
                      }
                    });
+               }else {
+                resolve(PERMISSION_RESULT.AUTHORIZED);
                }
              
             } else if (result === Permissions.RESULTS.BLOCKED) {
