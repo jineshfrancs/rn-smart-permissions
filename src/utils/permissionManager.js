@@ -32,7 +32,7 @@ export default class PermissionManager {
                  }
                });
              } else {
-                
+              resolve(PERMISSION_RESULT.DENIED);
              }       
            });
          } else {
@@ -175,9 +175,26 @@ export default class PermissionManager {
   }
 
   static checkMultiplePermissions(permissions, permissionBlockedDialog) {
-    new Promise(resolve=> {
-      Permissions.checkMultiple(permissions).then(response => {
-         if (
+    return new Promise(async resolve=> {
+      const response = await Permissions.checkMultiple(permissions);
+      if (
+        Object.keys(response).every(
+          result =>
+            response[result] === Permissions.RESULTS.GRANTED ||
+            response[result] === Permissions.RESULTS.LIMITED ||
+            response[result] === Permissions.RESULTS.AUTHORIZED
+        )
+      ) {
+        resolve(PERMISSION_RESULT.AUTHORIZED);
+      } else if (
+        Object.keys(response).some(
+          result =>
+            response[result] === Permissions.RESULTS.DENIED ||
+            response[result] === Permissions.RESULTS.UNDETERMINED 
+        )
+      ) {
+        Permissions.requestMultiple(permissions).then(response=> {
+          if (
             Object.keys(response).every(
               result =>
                 response[result] === Permissions.RESULTS.GRANTED ||
@@ -185,52 +202,34 @@ export default class PermissionManager {
                 response[result] === Permissions.RESULTS.AUTHORIZED
             )
           ) {
-            resolve(PERMISSION_RESULT.AUTHORIZED);
-          } else if (
-            Object.keys(response).some(
-              result =>
-                response[result] === Permissions.RESULTS.DENIED ||
-                response[result] === Permissions.RESULTS.UNDETERMINED 
-            )
-          ) {
-            Permissions.requestMultiple(permissions).then(response => {
-              if (
-                Object.keys(response).every(
-                  result =>
-                    response[result] === Permissions.RESULTS.GRANTED ||
-                    response[result] === Permissions.RESULTS.LIMITED ||
-                    response[result] === Permissions.RESULTS.AUTHORIZED
-                )
-              ) {
-               resolve(PERMISSION_RESULT.AUTHORIZED);
-              } else if(Object.keys(response).some(
-                result =>
-                  response[result] === Permissions.RESULTS.BLOCKED
-              )) {
-               permissionBlockedDialog().then((isNeeded) => {
-                  if (isNeeded) {
-                    Linking.openSettings();
-                    resolve(PERMISSION_RESULT.DENIED);
-                  }
-                });
-              } else {
-               resolve(PERMISSION_RESULT.DENIED);
-              }
-            });
-          } else if (Object.keys(response).some(
+           resolve(PERMISSION_RESULT.AUTHORIZED);
+          } else if(Object.keys(response).some(
             result =>
               response[result] === Permissions.RESULTS.BLOCKED
           )) {
-            permissionBlockedDialog().then((isNeeded) => {
-               if (isNeeded) {
-                 Linking.openSettings();
-                 resolve(PERMISSION_RESULT.DENIED);
-               }
-             });
+           permissionBlockedDialog().then((isNeeded) => {
+              if (isNeeded) {
+                Linking.openSettings();
+                resolve(PERMISSION_RESULT.DENIED);
+              }
+            });
           } else {
-            resolve(PERMISSION_RESULT.DENIED);
+           resolve(PERMISSION_RESULT.DENIED);
           }
-      });
+        });  
+      } else if (Object.keys(response).some(
+        result =>
+          response[result] === Permissions.RESULTS.BLOCKED
+      )) {
+        permissionBlockedDialog().then((isNeeded) => {
+           if (isNeeded) {
+             Linking.openSettings();
+             resolve(PERMISSION_RESULT.DENIED);
+           }
+         });
+      } else {
+        resolve(PERMISSION_RESULT.DENIED);
+      }
     });
   }
 }
