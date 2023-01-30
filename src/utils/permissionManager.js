@@ -93,14 +93,16 @@ export default class PermissionManager {
          result === Permissions.RESULTS.GRANTED ||
          result === Permissions.RESULTS.LIMITED
        ) {
-         if(Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION){
+         if(perm === Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION){
             this.enableLocation(resolve,isBluetooth);
-         }else if(Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) {
+         }else if(perm === Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) {
             RnSmartPermissions.turnOnBluetooth().then((isGot)=> {
                if(isGot){
                   resolve(PERMISSION_RESULT.AUTHORIZED);
                }
              });
+         }else {
+          resolve(PERMISSION_RESULT.AUTHORIZED);
          }
        } else if (result === Permissions.RESULTS.DENIED) {
          resolve(PERMISSION_RESULT.DENIED);
@@ -138,9 +140,9 @@ export default class PermissionManager {
               result === Permissions.RESULTS.GRANTED ||
               result === Permissions.RESULTS.LIMITED
             ) {
-               if(Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION){
+               if(perm === Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION){
                   this.enableLocation(resolve,isBluetooth);
-               }else if(Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) {
+               }else if(perm === Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL) {
                   RnSmartPermissions.turnOnBluetooth().then((isGot)=> {
                      if(isGot){
                         resolve(PERMISSION_RESULT.AUTHORIZED);
