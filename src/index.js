@@ -22,7 +22,7 @@ const RnSmartPermissions = NativeModules.RnSmartPermissions
 export const PERMISSION = {
   BLUETOOTH : "bluetooth",
   LOCATION : "location",
-  STORAGE : Platform.OS == 'ios' ? Permissions.PERMISSIONS.IOS.PHOTO_LIBRARY : Permissions.PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+  STORAGE : Platform.OS == 'ios' ? Permissions.PERMISSIONS.IOS.PHOTO_LIBRARY : ((Platform.Version >= 33)? Permissions.PERMISSIONS.ANDROID.READ_MEDIA_IMAGES : Permissions.PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE),
   CAMERA : Platform.OS == 'ios' ? Permissions.PERMISSIONS.IOS.CAMERA : Permissions.PERMISSIONS.ANDROID.CAMERA
 }
 
