@@ -1,6 +1,6 @@
 # rn-smart-permissions
 
-Permissions Library for React Native ( Android and iOS)
+Permissions Library for React Native ( Android and iOS). The NPM package is https://www.npmjs.com/package/rn-smart-permissions
 
 ## Installation
 
