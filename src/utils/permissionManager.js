@@ -29,6 +29,8 @@ export default class PermissionManager {
                RnSmartPermissions.turnOnBluetooth().then((isGot)=> {
                  if(isGot){
                   resolve(PERMISSION_RESULT.AUTHORIZED);
+                 } else{
+                  resolve(PERMISSION_RESULT.DENIED);
                  }
                });
              } else {
