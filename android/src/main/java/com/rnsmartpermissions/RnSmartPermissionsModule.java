@@ -48,9 +48,13 @@ public class RnSmartPermissionsModule extends ReactContextBaseJavaModule impleme
   public void turnOnBluetooth(Promise promise) {
     BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-      this.promise = promise;
-      Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-      context.startActivityForResult(intent, BLUETOOTH_ENABLE_CODE, new Bundle());
+      if (!mBluetoothAdapter.isEnabled()) {
+        this.promise = promise;
+        Intent intent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+        context.startActivityForResult(intent, BLUETOOTH_ENABLE_CODE, new Bundle());
+      } else {
+        promise.resolve(true);
+      }
     }else {
       if (!mBluetoothAdapter.isEnabled()) {
         mBluetoothAdapter.enable();
