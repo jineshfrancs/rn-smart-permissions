@@ -1,19 +1,17 @@
 import * as React from 'react';
 
-import { StyleSheet, View, Button, Alert } from 'react-native';
-import {
-  checkAndRequestPermissions,
-  PERMISSION,
-} from 'rn-smart-permissions';
+// import { StyleSheet, View, Button, Alert } from 'react-native';
+// import { checkAndRequestPermissions, PERMISSION } from 'rn-smart-permissions';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
+  // const [result, setResult] = React.useState<number | undefined>();
 
   React.useEffect(() => {}, []);
 
   return (
-    <View style={styles.container}>
-      <Button
+    // <View style={styles.container}>
+    {
+      /* <Button
         title="Location Permission"
         onPress={() => {
           checkAndRequestPermissions(
@@ -262,24 +260,25 @@ export default function App() {
               console.log('permission', e);
             });
         }}
-      />
-    </View>
+      /> */
+    }
+    // </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-  button: {
-    marginTop: 20,
-    marginVertical: 10,
-  }
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+//   box: {
+//     width: 60,
+//     height: 60,
+//     marginVertical: 20,
+//   },
+//   button: {
+//     marginTop: 20,
+//     marginVertical: 10,
+//   },
+// });
