@@ -190,6 +190,7 @@ export default class PermissionManager {
                 isBluetooth
               );
             } else {
+              reject('Permission denied');
             }
           });
         } else if (
