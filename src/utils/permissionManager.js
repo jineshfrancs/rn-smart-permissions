@@ -16,7 +16,7 @@ export default class PermissionManager {
     permissionBlockedDialog
   ) {
     return new Promise((resolve, reject) => {
-      if (permission == PERMISSION.BLUETOOTH) {
+      if (permission === PERMISSION.BLUETOOTH) {
         if (Platform.OS === 'android') {
           if (Platform.Version >= 31) {
             this.checkMultiplePermissions(
@@ -60,7 +60,7 @@ export default class PermissionManager {
             true
           );
         }
-      } else if (permission == PERMISSION.LOCATION) {
+      } else if (permission === PERMISSION.LOCATION) {
         let perm =
           Platform.OS === 'android'
             ? Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION
@@ -72,7 +72,7 @@ export default class PermissionManager {
           resolve,
           reject
         );
-      } else if (permission == PERMISSION.STORAGE) {
+      } else if (permission === PERMISSION.STORAGE) {
         this.handlePermissions(
           permission,
           permissionRationaleDialog,
@@ -80,7 +80,7 @@ export default class PermissionManager {
           resolve,
           reject
         );
-      } else if (permission == PERMISSION.CAMERA) {
+      } else if (permission === PERMISSION.CAMERA) {
         this.handlePermissions(
           permission,
           permissionRationaleDialog,
@@ -152,6 +152,8 @@ export default class PermissionManager {
               if (isNeeded) {
                 Linking.openSettings();
                 resolve(PERMISSION_RESULT.DENIED);
+              } else {
+                resolve(false);
               }
             });
           }
