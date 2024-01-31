@@ -219,6 +219,8 @@ export default class PermissionManager {
             if (isNeeded) {
               Linking.openSettings();
               resolve(PERMISSION_RESULT.DENIED);
+            }else {
+              reject("Location Permission Blocked");
             }
           });
         } else if (result === Permissions.RESULTS.UNAVAILABLE) {
