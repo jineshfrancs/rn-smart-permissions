@@ -156,6 +156,8 @@ export default class PermissionManager {
                 resolve(false);
               }
             });
+          } else {
+            resolve(false);
           }
         } else if (result === Permissions.RESULTS.UNAVAILABLE) {
           permissionBlockedDialog().then((isNeeded) => {
