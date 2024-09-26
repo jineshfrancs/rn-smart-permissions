@@ -4,7 +4,7 @@ import Permissions from 'react-native-permissions';
 import { Linking, NativeModules } from 'react-native';
 import { Platform } from 'react-native';
 import { PERMISSION, PERMISSION_RESULT } from '..';
-import RNAndroidLocationEnabler from 'react-native-android-location-enabler';
+import { promptForEnableLocationIfNeeded } from 'react-native-android-location-enabler';
 const RnSmartPermissions = NativeModules.RnSmartPermissions;
 
 export default class PermissionManager {
@@ -52,7 +52,7 @@ export default class PermissionManager {
           }
         } else {
           this.handlePermissions(
-            Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL,
+            Permissions.PERMISSIONS.IOS.BLUETOOTH,
             permissionRationaleDialog,
             permissionBlockedDialog,
             resolve,
@@ -98,7 +98,7 @@ export default class PermissionManager {
     if (Platform.OS === 'ios') {
       resolve(PERMISSION_RESULT.AUTHORIZED);
     } else {
-      RNAndroidLocationEnabler.promptForEnableLocationIfNeeded({
+      promptForEnableLocationIfNeeded({
         interval: 10000,
         fastInterval: 5000,
       })

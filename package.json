@@ -1,6 +1,6 @@
 {
   "name": "rn-smart-permissions",
-  "version": "0.3.8",
+  "version": "0.4.0",
   "description": "React native library to handle the runtime permissions in both Android and iOS. Library requests permissions and also handles the related features like turn on bluetooth, turn on location, navigating to settings page etc",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -67,13 +67,13 @@
     "jest": "^28.1.1",
     "pod-install": "^0.1.0",
     "prettier": "^2.0.5",
-    "react": "18.1.0",
-    "react-native": "0.70.6",
+    "react": "18.2.0",
+    "react-native": "0.71.0",
     "react-native-builder-bob": "^0.20.0",
     "release-it": "^15.0.0",
     "typescript": "^4.5.2",
-    "react-native-permissions": "3.8.0",
-    "react-native-android-location-enabler": "1.2.2"
+    "react-native-permissions": "4.1.5",
+    "react-native-android-location-enabler": "2.0.1"
   },
   "resolutions": {
     "@types/react": "17.0.21"
@@ -83,7 +83,7 @@
     "react-native": "*"
   },
   "engines": {
-    "node": ">= 16.0.0"
+    "node": ">= 18.1.0"
   },
   "packageManager": "^yarn@1.22.15",
   "jest": {
