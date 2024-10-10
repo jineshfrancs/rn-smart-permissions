@@ -134,7 +134,7 @@ export default class PermissionManager {
           if (perm === Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION) {
             this.enableLocation(resolve, isBluetooth);
           } else if (
-            perm === Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL
+            perm === Permissions.PERMISSIONS.IOS.BLUETOOTH
           ) {
             RnSmartPermissions.turnOnBluetooth().then((isGot) => {
               if (isGot) {
@@ -204,7 +204,7 @@ export default class PermissionManager {
           if (perm === Permissions.PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION) {
             this.enableLocation(resolve, isBluetooth);
           } else if (
-            perm === Permissions.PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL
+            perm === Permissions.PERMISSIONS.IOS.BLUETOOTH
           ) {
             RnSmartPermissions.turnOnBluetooth().then((isGot) => {
               if (isGot) {
